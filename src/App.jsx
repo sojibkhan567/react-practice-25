@@ -1,9 +1,9 @@
-import Welcome from "./Welcome"
+import Boimela from "./Boimela"
 
 function App() {
 
   return (
-    <Welcome/>
+    <Boimela/>
   )
 }
 
