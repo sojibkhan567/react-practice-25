@@ -1,54 +1,23 @@
 import BookRow from "./BookRow";
+import PropTypes from "prop-types";
 
-// Mock data for books
-const BOOKS = [
-  {
-    id: 1,
-    title: "To Kill a Mockingbird",
-    author: "Harper Lee",
-    featured: false,
-  },
-  {
-    id: 2,
-    title: "1984",
-    author: "George Orwell",
-    featured: false,
-  },
-  {
-    id: 3,
-    title: "The Great Gatsby",
-    author: "F. Scott Fitzgerald",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Pride and Prejudice",
-    author: "Jane Austen",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "The Catcher in the Rye",
-    author: "J.D. Salinger",
-    featured: false,
-  },
-];
+function BookList({ searchTerm, books }) {
+  const rows = [];
+  books.forEach((book) => {
+    if (book.title.toLowerCase().indexOf(searchTerm.toLowerCase()) === -1) {
+      return;
+    }
+    rows.push(<BookRow key={book.id} book={book} />);
+  });
 
-function BookList() {
   return (
-    <ul className="space-y-4">
-      {
-        BOOKS.map((book) => (
-          <li
-            key={book.id}
-            className="flex items-center justify-between bg-white p-4 shadow rounded-lg"
-          >
-            <BookRow book={book} />
-          </li>
-        ))
-      }
-    </ul>
+    <div className="space-y-4">{rows}</div>
   );
+}
+
+BookList.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  books: PropTypes.array.isRequired,
 }
 
 export default BookList;

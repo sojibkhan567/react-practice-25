@@ -14,4 +14,4 @@ BookDetail.propTypes = {
   author: PropTypes.string.isRequired,
 };
 
-export default BookDetail
+export default BookDetail;
